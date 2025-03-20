@@ -1,0 +1,120 @@
+// Problem Description: Jamilah works at the check-out counter at a Wal-mart store. Handing change (the amount less than a dollar in coins) back to customers is not a trivial chore to her. You are asked to write a program to help her out. The program prompts for an integer that represents the amount of change (in cents) to be handed back to a customer. The program then determines and prints the minimum number of quarters, dimes, nickels, and pennies that will make the correct change
+
+// =============== symbolic constants ==============================
+const int DECIMAL = 2;
+const int WIDTH = 5;
+
+// ==================== header files ===============================
+#include <iostream>    // for input/output
+#include <cstdlib>
+#include <iomanip>    // for output format
+using namespace std;
+
+// ================== data type declarations =======================
+
+// =================== function prototype ==========================
+
+
+// this program contains variable declaration statements
+// and assignment statements
+
+int main()
+{
+   //data declarations
+   //Initialize valueQuarter, valueDime, valueNickel,valuePenny
+   const int valueQuarter = 25;
+
+   const int valueDime = 10;
+
+   const int valueNickel = 5;
+
+   int numCents;
+   const int valuePenny = 1;
+
+   //Initalize numQuarters, numDimes, numNickles, NumPennies
+   int numQuarters, numDimes, numNickels, numPennies;
+   //Initalize NumCents
+
+   system("clear");
+
+   //Read numCents
+   cout << "Enter number of change (0-99):";
+   cin >> numCents;
+   //Caculate output (numQuarters, numDimes, numNickel, numPennies)
+
+   numQuarters = (numCents/valueQuarter);
+
+   numDimes = (numCents - (valueQuarter * numQuarters)) / valueDime;
+
+   numNickels = (numCents - (valueQuarter * numQuarters) - ( valueDime *numDimes)) / valueNickel;
+
+   numPennies = (numCents - (valueQuarter * numQuarters) - (valueDime *numDimes) - (valueNickel * numNickels)) / valuePenny;
+
+   //Display Output (numQuarters, numDimes, numNickel, numPennies)
+
+   cout << "The minimum number of coins to return " << numCents << " cents is" << endl;
+   cout << "Quarter(s): "
+        << numQuarters
+        << endl;
+
+   cout << "Dime(s): "
+        << numDimes
+        << endl;
+
+   cout << "Nickel(s): "
+        << numNickels
+        << endl;
+
+   cout << "Penny(ies): "
+        << numPennies
+        << endl;
+
+
+
+   return 0;
+}// end main
+//{
+// int (numCents)
+// Purpose: Find the minimum number
+// Precondition: Number of cents is between 0-99
+// Postcondition: The user enters the number of cents
+// int (numQuarters)
+// Purpose: Show the minimum number of quarters that can go into numCents
+// Precondition: Number of quarters is > 0
+// Postcondition: The number of quarters is displayed on the screen
+// int (numDimes)
+// Purpose: Find the minimum number  of dimes that can go into numCents
+// Precondition: Number of dimes is > 0
+// Postcondition: The minimum number of dimes
+// Postcondition: The number of quarters is displayed on the screen
+// int (numNickels)
+// Purpose: Find the minimum number  of nickels that can go into numCents
+// Precondition: Number of nickels is > 0
+// Postcondition: The minimum number of nickels
+// Postcondition: The number of quarters is displayed on the screen
+// int (numPennies)
+// Purpose: Find the minimum number of pennies that can go into numCents
+// Precondition: Number of pennies is > 0
+// Postcondition: The minimum number of pennies is displayed on the screen
+// int (valueQuarter)
+// Purpose: Used to calculate minimum number of quarters, dimes, nickels, and pennies
+// Precondition: Is equal to 25
+// Postcondition: Is used to caluculate the minimum number of quarters, dimes, nickels, and pennies by being divided and multiplied
+
+// int (valueDime)
+// Purpose: Used to calculate the minimum number of  dimes, nickels, and pennies
+// Precondition: Is equal to 10
+// Postcondition:Is used to caluculate number of dimes, nickels, and pennies by being multiplied and divided
+
+// int (valueNickel)
+// Purpose: Used to calculate the minimum number of nickels, and pennies
+// Precondition: Is equal to 5
+// Postcondition:Is used to caluculate number of nickels, and pennies by being multiplied and divided
+
+// int (valuePenny)
+// Purpose: Used to calculate the minimum number of pennies
+// Precondition: Is equal to 10
+// Postcondition:Is used to caluculate number of pennies by being multiplied and divided
+
+//}// end
+
