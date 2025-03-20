@@ -1,0 +1,117 @@
+// Problem Description: Francine, the ACM treasurer, needs to know how much money is needed for the annual pizza party. A large pizza has 8 slices and costs $7.99 (local sales tax is 9.5 percent). Write an app to help her. The app should read in the number of people invited to the party and the average number of slices per person. Determine and print the number pizzas needed for the people invited to the party and the cost for these pizzas (including tax) (format, $, accurate to 2 decimal places).
+// This program will calculate the number of pizzas needed and total cost of pizzas after tax based on the amount of people and the average slices per person
+
+// ==================== header files ===============================
+#include <iostream>    // for input/output
+#include <cstdlib>
+#include <iomanip>
+#include <cmath>    // for output format
+using namespace std;
+// =============== symbolic constants ==============================
+const int DECIMAL = 2;
+const int WIDTH = 5;
+const int Slice2Pizza = 8;
+const float costLargePizza = 7.99;
+const float salesTax = 0.095;
+
+// ================== data type declarations =======================
+
+// =================== function prototype ==========================
+
+
+// this program contains variable declaration statements
+// and assignment statements
+
+int main()
+{
+   // data declarations
+
+   // Initalize amountTax and costNoTax
+   float amountTax, costNoTax;
+
+   //Initialize numPizzas and totalCost
+   int numPizzas;
+   float totalCost;
+
+   //Initialize numPeople and avgSlices
+
+   int numPeople, avgSlices;
+
+   system("clear");
+
+   //read numPeople, avgSlices
+   cout << "Enter the number of people invited :";
+   cin >> numPeople;
+   cout << "Enter the average number of slices per person:";
+   cin >> avgSlices;
+
+   //Compute totalCost and numPizzas
+   numPizzas = ceil (float  (numPeople) * float (avgSlices) / float (Slice2Pizza));
+   amountTax = costLargePizza * numPizzas* salesTax;
+   costNoTax = costLargePizza * numPizzas;
+
+   totalCost = amountTax + costNoTax;
+
+   //Display totalcost and numPizzas
+   cout << "Number of pizzas needed: " << numPizzas << endl;
+   cout << fixed << showpoint << setprecision(DECIMAL);
+   cout << "Cost of pizzas with tax: $" << totalCost << endl;
+   return 0;
+}// end main
+
+// const int Slice2Pizza
+// Purpose: Determines slices of pizzas in each large Pizza
+// Precondition: Is equal to 8
+// Postcondition: Used to calculate numPizzas
+
+// const float costLargePizza
+// Purpose: Determines the cost of one Large Pizza
+// Precondition: Is equal to 7.99
+// Postcondition: Used to calculate totalCost, amountTax, and costNoTax
+
+// const float salesTax
+// Purpose: The percantange of tax on sales
+// Precondition: Is equal to 0.095
+// Postcondition: Used to calculate totalCost, amountTax, and
+
+// const float costLargePizza
+// Purpose: Determines the cost of one Large Pizza
+// Precondition: Is equal to 7.99
+// Postcondition: Used to calculate totalCost, amountTax, and costNoTax
+
+// float amountTax
+// Purpose: The amount of tax on sales based on the number of pizzas
+// Precondition: Is always positive
+// Postcondition: Used to calculate totalCost
+
+// float costNoTax
+// Purpose: The cost of pizzas without Tax
+// Precondition: Is the cost of large pizzas times the number of pizzas
+// Postcondition: Used to calculate totalCost
+
+// const float costLargePizza
+// Purpose: Determines the cost of one Large Pizza
+// Precondition: Is equal to 7.99
+// Postcondition: Used to calculate totalCost, amountTax, and costNoTax
+
+// int numPizzas
+// Purpose: The number of pizzas needed to feed the people invited
+// Precondition: Is equal to number of people times Average Slices divided by the number of slices in each Large Pizza
+// Postcondition: The number of pizzas is displayed on the screen and used to calculate totalcost, amountTax, and costNoTax
+
+// int avgSlices
+// Purpose: The average number of slices each person invited gets
+// Precondition: Is a positive number equal to what the user puts in
+// Postcondition: The user inputs a positive integer and is used to calculate numPizzas
+
+// int numPeople
+// Purpose: The number of pizza people invited
+// Precondition: The user inputs the number of people invited
+// Postcondition: The user inputs the number of people invited and is used to calculate numPizzas
+
+// float totalCost
+// Purpose: The cost of pizza after tax
+// Precondition: Is a positive number that is equal to amountTax plus costNoTax
+// Postcondition: The total cost of the pizza is calculated and displayed on the screen
+//}// end
+
