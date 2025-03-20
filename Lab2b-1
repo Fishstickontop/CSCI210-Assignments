@@ -1,0 +1,142 @@
+// Problem Description: The shaded area within the trapezoid is the area to be painted. The figure inside the trapezoid is a rectangle. Write a program that reads in the length of the two bases and the height of the trapezoid, the length and width of the rectangle ( units are measure in feet), and the cost  per square feet. If the area of the trapezoid is larger, compute the area of the figure that is to be painted.and the cost to paint the shaded area. Display the area to be painted and the cost to paint the shaded area with appropriate labels and accurate to 2 decimal places. If the rectangle is too large, display a message “Cannot compute!”.  Formula to compute area of a trapezoid (a and b are the two bases, h is the height).
+// This program will calculate the shaded area to be painted and the cost to paint the shaded area. If
+
+
+// ==================== header files ===============================
+#include <iostream>    // for input/output
+#include <cstdlib>
+#include <iomanip>
+#include <cmath>   // for output format
+using namespace std;
+// =============== symbolic constants ==============================
+const int DECIMAL = 2;
+const int WIDTH = 5;
+// ================== data type declarations =======================
+
+
+// =================== function prototype ==========================
+
+
+// this program contains variable declaration statements
+// and assignment statements
+
+int main()
+{
+   // data declarations
+
+   //Initialize areaPaint, totalCost
+   float areaPaint, totalCost;
+
+   //Initialize areaTrapezoid, areaRectangle
+   float areaTrapezoid, areaRectangle;
+
+   //Initialize Base1Trap, Base2Trap,heightTrap, lengthRect, widthRect, Cost2Paint
+   float Base1Trap, Base2Trap, heightTrap, lengthRect, widthRect, Cost2Paint;
+
+   system("clear");
+
+   //read Base1Trap, Base2Trap, heightTrap, lengthRect, widthRect, Cost2Paint
+      cout << "Enter the length of base 1: ";
+      cin >> Base1Trap;
+      cout << "Enter the length of base 2: ";
+      cin >> Base2Trap;
+      cout << "Enter the height of the trapezoid: ";
+      cin >> heightTrap;
+      cout << "Enter the length of the rectangle: ";
+      cin >> lengthRect;
+      cout << "Enter the width of the rectangle: ";
+      cin >> widthRect;
+      cout << "Enter cost to paint(per square foot)$:";
+      cin >> Cost2Paint;
+
+   //Compute areaPaint, totalCost
+   areaTrapezoid = ((Base1Trap + Base2Trap)/2 ) * heightTrap;
+   areaRectangle = (lengthRect * widthRect);
+   areaPaint = floor(areaTrapezoid * 100.00 + 0.5) /100.00 - floor(areaRectangle * 100.00 + 0.5) / 100.00;
+   totalCost = areaPaint * Cost2Paint;
+   //Display and Print areaPaint, totalCost
+   if (areaTrapezoid < areaRectangle)
+      cout << "Cannot compute!" << endl;
+   else
+      {
+      cout << fixed << showpoint << setprecision(DECIMAL);
+      cout << "Area to be painted: " << (areaPaint) << endl;
+      cout << "Cost to paint $" << totalCost << endl;
+      }
+   return 0;
+}// end main
+
+//{
+//float (Base1Trap)
+// Purpose: Is input by the user and is a base of a trapezoid
+// Precondition: Is a positive float
+// Postcondition: Used to calculate areaTrap
+
+//float (Base2Trap)
+// Purpose: Is input by the user and is a base of a trapezoid
+// Precondition: Is a positive float
+// Postcondition: Used to calculate areaTrap
+
+//float (heightTrap)
+// Purpose: Is input by the user and is the height of a trapezoid
+// Precondition: Is a positive float
+// Postcondition: Used to calculate areaTrap
+
+//float (lengthRect)
+// Purpose: Is input by the user and the length of a rectangle
+// Precondition: Is a positive float
+// Postcondition: Used to calculate areaRect
+
+//float (widthRect)
+// Purpose: Is input by the user and the width of a rectangle
+// Precondition: Is a positive float
+// Postcondition: Used to calculate areaRect
+
+//float (lengthRect)
+// Purpose: Is input by the user and the length of a rectangle
+// Precondition: Is a positive float
+// Postcondition: Used to calculate areaRect
+
+//float (Cost2Paint)
+// Purpose: Is input by the user and determines the amount of cost per foot of paint
+// Precondition: Is a positive float
+// Postcondition: Used to calculate totalCost
+
+
+//float (areaTrapezoid)
+// Purpose: Is the formula for the area of a trapezoid
+// Precondition: Is a positive float
+// Postcondition: Used to calculate areaPaint
+
+//float (areaTrapezoid)
+// Purpose: Is the formula for the area of a trapezoid
+// Precondition: Is a positive float
+// Postcondition: Used to calculate areaPaint
+
+//float (areaRectangle)
+// Purpose: Is the formula for the area of a rectangle
+// Precondition: Is a positive float
+// Postcondition: Used to calculate areaPaint
+
+//float (areaPaint)
+// Purpose: Is the formula for the area to be painted
+// Precondition: Is a positive float
+// Postcondition: Used to calculate totalCost and is displayed on the screen
+
+//float (totalCost)
+// Purpose: Is the formula for the cost of the area to be painted
+// Precondition: Is a positive float
+// Postcondition: Is displayed on the screen
+
+
+
+
+
+//}// end
+//void functionName()
+// Purpose:
+// Precondition:
+// Postcondition:
+//{
+//}// end
+
