@@ -1,0 +1,159 @@
+// Problem Description:Write a function named computeSpeedingFine to determine the speeding fine based on the speed and location of the driver. The input/value parameters are:  an integer value representing the speed of the vehicle and an integer (1-construction zone, 0- Non-construction zone). Use the table below to calculate the speeding fine using:
+
+
+// ==================== header files ===============================
+#include <iostream>    // for input/output
+#include <cstdlib>
+#include <iomanip>    // for output format
+using namespace std;
+// =============== symbolic constants ==============================
+const int DECIMAL = 2;
+const int WIDTH = 5;
+const int LOWSPEEDLIMIT = 50;
+const int UPPERSPEEDLIMIT= 65;
+
+// ================== data type declarations =======================
+
+// =================== function prototype ==========================
+void computeSpeedingFine(int,int, float&);
+// this program contains variable declaration statements
+// and assignment statements
+
+int main()
+{
+   // data declarations
+   int speed;
+   int location;
+   float speedingFine;
+
+   cout << "Test #1" << endl;
+   location = 1;
+   speed = 49;
+   computeSpeedingFine(speed, location, speedingFine);
+   cout << fixed << showpoint << setprecision(DECIMAL);
+   cout << "Speed = " << speed << endl
+        << "Location = " << location << endl
+        << "*** Speeding Fine given $" << speedingFine << endl;
+
+   cout << "Test #2" << endl;
+   location = 1;
+   speed = 50;
+   computeSpeedingFine(speed, location, speedingFine);
+   cout << fixed << showpoint << setprecision(DECIMAL);
+   cout << "Speed = " << speed << endl
+        << "Location = " << location << endl
+        << "*** Speeding Fine given $" << speedingFine << endl;
+
+   cout << "Test #3" << endl;
+   location = 1;
+   speed = 51;
+   computeSpeedingFine(speed, location, speedingFine);
+   cout << fixed << showpoint << setprecision(DECIMAL);
+   cout << "Speed = " << speed << endl
+        << "Location = " << location << endl
+        << "*** Speeding Fine given $" << speedingFine << endl;
+
+   cout << "Test #4" << endl;
+   location = 0;
+   speed = 49;
+   computeSpeedingFine(speed, location, speedingFine);
+   cout << fixed << showpoint << setprecision(DECIMAL);
+   cout << "Speed = " << speed << endl
+        << "Location = " << location << endl
+        << "*** Speeding Fine given $" << speedingFine << endl;
+
+   cout << "Test #5" << endl;
+   location = 0;
+   speed = 50;
+   computeSpeedingFine(speed, location, speedingFine);
+   cout << fixed << showpoint << setprecision(DECIMAL);
+   cout << "Speed = " << speed << endl
+        << "Location = " << location << endl
+        << "*** Speeding Fine given $" << speedingFine << endl;
+
+   cout << "Test #6" << endl;
+   location = 0;
+   speed = 51;
+   computeSpeedingFine(speed, location, speedingFine);
+   cout << fixed << showpoint << setprecision(DECIMAL);
+   cout << "Speed = " << speed << endl
+        << "Location = " << location << endl
+        << "*** Speeding Fine given $" << speedingFine << endl;
+
+   cout << "Test #7" << endl;
+   location = 1;
+   speed = 64;
+   computeSpeedingFine(speed, location, speedingFine);
+   cout << fixed << showpoint << setprecision(DECIMAL);
+   cout << "Speed = " << speed << endl
+        << "Location = " << location << endl
+        << "*** Speeding Fine given $" << speedingFine << endl;
+
+   cout << "Test #8" << endl;
+   location = 1;
+   speed = 65;
+   computeSpeedingFine(speed, location, speedingFine);
+   cout << fixed << showpoint << setprecision(DECIMAL);
+   cout << "Speed = " << speed << endl
+        << "Location = " << location << endl
+        << "*** Speeding Fine given $" << speedingFine << endl;
+
+   cout << "Test #9" << endl;
+   location = 1;
+   speed = 66;
+   computeSpeedingFine(speed, location, speedingFine);
+   cout << fixed << showpoint << setprecision(DECIMAL);
+   cout << "Speed = " << speed << endl
+        << "Location = " << location << endl
+        << "*** Speeding Fine given $" << speedingFine << endl;
+
+   cout << "Test #10" << endl;
+   location = 0;
+   speed = 64;
+   computeSpeedingFine(speed, location, speedingFine);
+   cout << fixed << showpoint << setprecision(DECIMAL);
+   cout << "Speed = " << speed << endl
+        << "Location = " << location << endl
+        << "*** Speeding Fine given $" << speedingFine << endl;
+
+   cout << "Test #11" << endl;
+   location = 0;
+   speed = 65;
+   computeSpeedingFine(speed, location, speedingFine);
+   cout << fixed << showpoint << setprecision(DECIMAL);
+   cout << "Speed = " << speed << endl
+        << "Location = " << location << endl
+        << "*** Speeding Fine given $" << speedingFine << endl;
+
+   cout << "Test #12" << endl;
+   location = 0;
+   speed = 66;
+   computeSpeedingFine(speed, location, speedingFine);
+   cout << fixed << showpoint << setprecision(DECIMAL);
+   cout << "Speed = " << speed << endl
+        << "Location = " << location << endl
+        << "*** Speeding Fine given $" << speedingFine << endl;
+
+system("clear");
+return 0;
+}// end main
+
+void computeSpeedingFine(int speed, int location, float& speedingFine)
+{ // begin void fucntion
+   if (speed <= LOWSPEEDLIMIT)
+      speedingFine = 0.00;
+   else if (speed > LOWSPEEDLIMIT && speed < UPPERSPEEDLIMIT && location == 1)
+      speedingFine =  15.50 * (speed - LOWSPEEDLIMIT) * 2;
+   else if (speed > LOWSPEEDLIMIT && speed < UPPERSPEEDLIMIT && location == 0)
+      speedingFine =  15.50 * (speed - LOWSPEEDLIMIT);
+   else if (speed >= UPPERSPEEDLIMIT && location == 1)
+      speedingFine = (187.50 + (speed - UPPERSPEEDLIMIT)* 15) * 2.5;
+   else if (speed >= UPPERSPEEDLIMIT && location == 0)
+      speedingFine = (187.50 + (speed - UPPERSPEEDLIMIT)* 15);
+} // end void function
+//void (computeSpeedingFine)
+// Purpose: This function will determing the speeding fine
+// Precondition: The speed and location have been assigned values
+// Postcondition: Based on location and speed the appropriate amount has been determined and assigned tp speedingFine
+
+
