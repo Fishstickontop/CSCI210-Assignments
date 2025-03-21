@@ -1,0 +1,85 @@
+// Filename: bonus7b-final.cpp
+// Name: Darren Hall
+// Class: CSCI 210 Programming I
+// Section/Lab: Section 2 - Tuesday and Thursday
+// Problem Description:
+// The manager of TU Tech & Cells wants you to design a website that takes customer orders. There are three types of items sold on the website – Galaxy S23, iPhone 14, Touch Screen Laptop. When the customer visits the website, it asks the user to enter the number of devices ordered in each of the three categories. Next, calculate and print the total sale amount, the total number of devices purchased, and what percentage of devices purchased were iPhones.
+
+
+
+
+// ==================== header files ===============================
+#include <iostream>    // for input/output
+#include <cstdlib>
+#include <iomanip>    // for output format
+using namespace std;
+// =============== symbolic constants ==============================
+const int DECIMAL = 2;
+const int WIDTH = 5;
+const float GALAXY = 1694.25;
+const float IPHONE = 2149.65;
+const float TOUCHSCREEN = 943.99;
+
+
+// ================== data type declarations =======================
+
+// =================== function prototype ==========================
+void readInput(int&, int&, int&);
+void computeDeviceSalePercent(int, int, int, int&, float&, float&);
+void displayResults(int, float, float);
+
+// this program contains variable declaration statements
+// and assignment statements
+
+int main()
+{
+   // data declarations
+   int numGalaxy, numIphone, numTouchscreen;
+   int totalDevice;
+   float totalSales, percentIphone;
+
+   system("clear");
+
+   readInput(numGalaxy, numIphone, numTouchscreen);
+   computeDeviceSalePercent(numGalaxy, numIphone, numTouchscreen, totalDevice, totalSales, percentIphone);
+   displayResults(totalDevice, totalSales, percentIphone);
+return 0;
+}// end main
+void readInput(int& numGalaxy, int& numIphone, int& numTouchscreen)
+// Purpose: This function reads in the number of Galaxy S23, Iphone 14, and TouchScreen Laptop
+// Precondition: None
+// Postcondition: The number of Galaxy S23, Iphone 14, and TouchScreen Laptop are entered from the keyboard.
+//                output parameters - (int) numGalaxy, (int) numIphone, (int) numTouchscreen
+{
+   cout << "Enter the number of Galaxy S23s purchased: ";
+   cin >> numGalaxy;
+
+   cout << "Enter the number of Iphone 14s purchased: ";
+   cin >> numIphone;
+
+   cout << "Enter the number of Touchscreen Laptops purchased: ";
+   cin >> numTouchscreen;
+} // end readInput function
+
+void computeDeviceSalePercent(int numGalaxy, int numIphone, int numTouchscreen, int& totalDevice, float& totalSales, float& percentIphone)
+// Purpose: This function computes the total devices, total sales, and percent of Iphones.
+// Precondition: The numGalaxy, numIphone, numTouchscreen have been read from the keyboard.
+//               input parameters - (int) numGalaxy, (int) numIphone, (int) numTouchscreen
+// Postcondition: The total number of devices, total amount of sales and percent of Iphones is computed
+//                outparameters - (int) totalDevice, (float) totalSales, (float) percentIphone
+{
+   totalDevice = numGalaxy + numIphone + numTouchscreen;
+   totalSales = (numGalaxy * GALAXY) + (numIphone * IPHONE) + (numTouchscreen * TOUCHSCREEN);
+   percentIphone = numIphone / float(totalDevice) * 100;
+} // end computeDeviceSalePercent function
+void displayResults(int totalDevice, float totalSales, float percentIphone)
+// Purpose: This function displays the output
+// Precondition: The total devices, total sales, and percent of Iphones has been computed
+// Postcondition: The total devices, total sales, and percent of Iphones have been printed on the screen.
+{
+   cout << "Total Number of Devices Purchased: ";
+   cout << fixed << showpoint << setprecision(DECIMAL);
+   cout << "Total Sale Amount: $" << totalSales << endl;
+   cout << fixed << showpoint << setprecision(1);
+   cout << "% of Iphone 14 purchased: " << percentIphone << "%" << endl;
+}// end displayResults function
