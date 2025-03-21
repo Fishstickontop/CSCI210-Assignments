@@ -1,0 +1,86 @@
+// Section/Lab: Section 2 - Tuesday and Thursday
+// Problem Description:
+// Write a void function to read in the speed and location.
+// Compute the fine and display the speeding fine and speed
+/*
+   1. A void function to read in the speed and location
+   2. A void function named computeSpeedingFine that has two input parameters -the amount of speed and location. The function should compute the speeding fine.
+   3. A void function to display speed and the speeding fine.
+*/
+
+
+// ==================== header files ===============================
+#include <iostream>	// for input/output
+#include <cstdlib>
+#include <iomanip>	// for output format
+using namespace std;
+// =============== symbolic constants ==============================
+const int DECIMAL = 2;
+const int WIDTH = 5;
+const int LOWSPEEDLIMIT = 50;
+const int UPPERSPEEDLIMIT= 65;
+
+// ================== data type declarations =======================
+
+// =================== function prototype ==========================
+void readData(int&, int&);
+void computeSpeedingFine(int, int, float&);
+void displayResults(int, float);
+// this program contains variable declaration statements
+// and assignment statements
+
+int main()
+{
+   // data declarations
+   int speed, location;
+   float speedingFine;
+
+   system("clear");
+   readData(speed, location);
+   computeSpeedingFine(speed, location, speedingFine);
+   displayResults(speed, speedingFine);
+
+   return 0;
+}// end main
+
+void readData(int& speed, int& location)
+// Purpose: This function reads in the speed and the location
+// Precondition: None
+// Postcondition: The speed and the location are entered from the keyboard. output parameters - (int) speed, (int) location
+{
+   cout << "Enter the speed: ";
+   cin >> speed;
+
+   cout << "Enter the location (1-construction zone, 0- Nonconstruction Zone): ";
+   cin >> location;
+}// end readData function
+
+void computeSpeedingFine(int speed, int location, float& leMoney)
+// Purpose: This function computes the speeding fine
+// Precondition: The speed and location have been read from the keyboard.
+//           	input parameters -(int) speed, (int) location
+//Postcondition: The speedingfine is computed.
+//            	output parameters - (float) leMoney
+{
+  if (speed <= LOWSPEEDLIMIT)
+  	leMoney = 0.00;
+   else if (speed > LOWSPEEDLIMIT && speed < UPPERSPEEDLIMIT && location == 1)
+  	leMoney =  15.50 * (speed - LOWSPEEDLIMIT) * 2;
+   else if (speed > LOWSPEEDLIMIT && speed < UPPERSPEEDLIMIT && location == 0)
+  	leMoney =  15.50 * (speed - LOWSPEEDLIMIT);
+   else if (speed >= UPPERSPEEDLIMIT && location == 1)
+  	leMoney = (187.50 + (speed - UPPERSPEEDLIMIT)* 15) * 2.5;
+   else if (speed >= UPPERSPEEDLIMIT && location == 0)
+  	leMoney = (187.50 + (speed - UPPERSPEEDLIMIT)* 15);
+}// end computeSpeedingFine function
+
+void displayResults(int speed, float leMoney)
+// Purpose: This function displays the output
+// Precondition: The speed is entered from the keyboard and the speeding fine is computed.
+//           	input parameters - speed (int) and leMoney (float)
+//Postcondition: The speed and speeding fine have been printed on the computer screen.
+{
+   cout << fixed << showpoint << setprecision(DECIMAL);
+   cout << "The speed the vehicle was going " << speed << endl;
+   cout << "The speeding fine is $" << leMoney << endl;
+} // end displayResults
