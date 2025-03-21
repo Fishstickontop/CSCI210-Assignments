@@ -1,0 +1,105 @@
+// Filename: lab8b-Final.cpp
+// Name: Darren Hall
+// Class: CSCI 210 Programming I
+// Section/Lab: Section 2 - Tuesday and Thursday
+// Problem Description: This program simulates the rolling of dice until the first dice is two 5 times or doubles are rolled.
+// The program also computes the percentage of rolls in which the sum is less than 6 and the number of times die 1 is greater than 3 and die2 is less than 3 at the same time.
+
+
+// ==================== header files ===============================
+#include <iostream>    // for input/output
+#include <cstdlib>
+#include <iomanip>
+#include "utility.h"   // for output format
+using namespace std;
+// =============== symbolic constants ==============================
+const int DECIMAL = 2;
+const int WIDTH = 5;
+const int MIN_VALUE = 1;
+const int MAX_VALUE = 6;
+
+
+// ================== data type declarations =======================
+
+// =================== function prototype ==========================
+void computePercentageSumLess(float &, int &);
+void displayResults(float, int);
+
+// this program contains variable declaration statements
+// and assignment statements
+
+int main()
+{
+   // data declarations
+   float percent;
+   int sum_less;
+   system("clear");
+
+   setRandomSeed();
+   computePercentageSumLess(percent, sum_less);
+   displayResults(percent, sum_less);
+   return 0;
+}// end main
+
+void computePercentageSumLess(float& percent , int& sum_less)
+//Purpose: Compute percentage of rolls in which the is less than 6 and the number of times dice one is more than 3 and die two is less than 3 at the same time.
+//Preconditions: percent has been defined between 0% and 100%
+//Postconditions:The percentage of rolls that have face-up values where the sum is less than six.
+   {
+      int die_one, die_two, count_rolls, lessSums, count_sum,count_equal,count_one;
+
+      count_rolls = 0;
+      lessSums = 0;
+      count_sum = 0;
+      count_one = 0;
+      count_equal = 0;
+
+      while (count_equal < 1 && count_one != 5)
+      {// begin while loop
+          die_one = random(MAX_VALUE) + MIN_VALUE;
+          die_two = random(MAX_VALUE) + MIN_VALUE;
+
+          cout << "("
+           << die_one
+           << ", "
+           << die_two
+           << ")"
+           << endl;
+
+         if (die_one > 3 && die_two < 3 )
+            lessSums++;
+         else if (die_one + die_two < 6)
+            count_sum++;
+
+         count_rolls++;
+
+          if (die_two == die_one || die_one == die_two)
+            count_equal++;
+         else if (die_one == 2)
+            count_one++;
+      }// end while loop
+         percent = float(count_sum) / float(count_rolls) * 100;
+
+         sum_less = lessSums;
+
+   }// end computePercentageSumless
+
+void displayResults(float percent, int sum_less)
+//Purpose: display percentage of rolls in which the sum of the face up values are less than 6 and the number of times dice one is more than 3 and die two is less than 3 at the same time.
+//Precondition: Percent and sum_less has been computed
+//Postcondition: The percent and sum_less is displayed on the screen
+{ //begin displayResults
+
+   cout << fixed << showpoint;
+   cout << setprecision(DECIMAL)
+        << percent
+        << "% of rolls that have face-up values where the sum"
+        << " is less than 6"
+        << endl;
+   cout << "Number of rolls that have a face-up value of dice one is more than three and dice two is less than three is: "
+        << sum_less
+        << endl;
+} //end displayResults
+
+
+
