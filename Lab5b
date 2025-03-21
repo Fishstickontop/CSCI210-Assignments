@@ -1,0 +1,97 @@
+// Problem Description:  Raymond wants to enter Law School after he graduates from State University. However, he must pass an entrance exam before he can be admitted. Write a program to help Raymond process his test scores. First, read in the expected total score he must meet in order to be admitted. Next, read in the scores from each section of the test. Continue to read in section scores until the user enters -7 for a score. Next, read in the question type (R/r - reading, L/l - Logic, A/a - Analytical). Compute and display Raymond’s total score. Also display a message indicated his law school score status. Determine and display his lowest score. Display a message - i.e. Logic (score) was less than/greater than Analytic (score)- stating which question type scored the most points (Logic or Analytical).
+
+
+
+// ==================== header files ===============================
+#include <iostream>	// for input/output
+#include <cstdlib>
+#include <iomanip>
+#include <cctype>
+#include <cmath>  	// for output format
+using namespace std;
+// =============== symbolic constants ==============================
+const int DECIMAL = 2;
+const int WIDTH = 5;
+
+// ================== data type declarations =======================
+
+// =================== function prototype ==========================
+
+
+// this program contains variable declaration statements
+// and assignment statements
+
+int main()
+{// Begin main
+
+   // data declarations
+   int sectionScore, expectedScore;
+   char questionType;
+   int totalScore;
+
+   system("clear");
+   //initialize minium score
+   int min_score = 99999;
+
+   //initialize logicScore and analyticScore
+   int logicScore = 0;
+   int analyticScore = 0;
+
+   // intialize expectedScore;
+   cout << "What is the score for entrance to law school? ";
+   cin >> expectedScore;
+
+   //initialize sectionScore
+   cout << "Enter section score or (-7 to exit): ";
+   cin >> sectionScore;
+
+   while (sectionScore != -7)
+   { //Begin Loop
+
+  	//read questionType
+  	cout << "Enter question type (R, L, or A): ";
+  	cin >> questionType;
+
+  	//calculate logicScore
+     	if (questionType == 'L' || questionType == 'l')
+     	{ //Begin if
+        	logicScore += sectionScore;
+
+     	} //end if
+     	//compute analyticScore
+     	else if (questionType == 'a' || questionType == 'A')
+     	{ //begin if
+        	analyticScore += sectionScore;
+     	} //end if
+
+     	//compute min_score
+  	if (sectionScore < min_score )
+  	min_score = sectionScore;
+
+  	//compute totalScore
+  	totalScore += sectionScore;
+
+  	//update sectionScore
+  	cout << "Enter section score (-7 to exit): ";
+  	cin >> sectionScore;
+   }// end loop
+
+   //read min_score
+   cout << "Lowest Score: " << min_score << endl;
+
+   //read totalScore
+   cout << "Raymond's total score: " << totalScore << endl;
+   if (totalScore >= expectedScore)
+   cout << "Raymond met the score needed" << endl;
+   else
+   cout << "Raymond did NOT meet the score needed" << endl;
+
+  	//compute if Raymond met score criteria
+   if (logicScore > analyticScore)
+  	cout << "Logic score (" << logicScore << ") is greater than analytic score (" << analyticScore << ")" << endl;
+	else if (logicScore < analyticScore)
+  	cout << "Logic score (" << logicScore << ") is less than analytic score (" << analyticScore << ")" << endl;
+   else
+  	cout << "Logic score (" << logicScore << ") is equal to analytic score (" << analyticScore << ")" << endl;
+return 0;
+}// end main
