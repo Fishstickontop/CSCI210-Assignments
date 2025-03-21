@@ -1,0 +1,83 @@
+// Problem Description: Write a program that processes the website metrics for a collection of websites. For each website processed, read in the Browser used (C/c-Chrome, F/f - Mozilla Firefox, E/e - Microsoft Edge, O/o - Other) to access the website, the number of new visitors, and the number of returning visitors. Continue to prompt for user input until 3 websites use the Firefox browser. Calculate and display the following (with descriptive labels):
+// Number of websites processed
+// Percent of websites with over 100 new visitors
+
+
+
+// ==================== header files ===============================
+#include <iostream>    // for input/output
+#include <cstdlib>
+#include <iomanip>    // for output format
+using namespace std;
+// =============== symbolic constants ==============================
+const int DECIMAL = 2;
+const int WIDTH = 5;
+const int MAX_FIREFOX = 3;
+
+// ================== data type declarations =======================
+
+// =================== function prototype ==========================
+
+
+// this program contains variable declaration statements
+// and assignment statements
+
+int main()
+{ //start main
+
+   // data declarations
+   char website_type;
+   int new_visitors, return_visitors;
+   float percentNewVisitors;
+   int count_websites, count_firefox, count_newvisitors;
+
+   system("clear");
+
+   //initialize count_newvisitors to 0
+   count_newvisitors = 0;
+
+   // initialize count_websites to 0
+   count_websites = 0;
+
+   //initialize count_firefox (lcv)
+   count_firefox= 0;
+
+   //test count_websites
+   while (count_firefox != MAX_FIREFOX )
+   { //Begin Loop
+
+      //read website_type, new_visitors, return_visitors
+      cout << "Please enter your browser type E/e - Microsoft Edge, C/c - Chrome, F/f - Firefox, O/o Other: ";
+      cin >> website_type;
+
+      cout << "Enter the number of new visitors (Positive Integer): ";
+      cin >> new_visitors;
+
+      cout << "Enter the number of returning visitors (Positive Integer): ";
+      cin >> return_visitors;
+
+      //update count_newvisitors
+      if(new_visitors > 100)
+         {
+            ++count_newvisitors;
+         }
+
+
+      //update count_websites
+      ++count_websites;
+
+      //update count_firefox
+         if (website_type == 'F' || website_type == 'f')
+         ++count_firefox;
+   }//End Loop
+
+   //compute percentNewVisitors
+   percentNewVisitors = count_newvisitors / float(count_websites) * 100;
+
+   //Print count_website, percentNewVisitors
+   cout << "Number of websites processed: " << count_websites << endl;
+
+   cout << fixed << showpoint << setprecision(DECIMAL);
+   cout << "The percent of websites with over 100 visitors is: " << percentNewVisitors << endl;
+   return 0;
+}// end main
