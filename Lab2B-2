@@ -1,0 +1,114 @@
+/ Problem Description: Michael is considering changing his TV service. His current service, (character (B/b - Barter),  charges a monthly base rate of $55.95 plus $6.50 per premium channel. He is thinking about switching to another TV service (T/t - Tish)  that charges a monthly base rate of $40.99 plus and $11.50 for each premium channel. Help him decide which service to use. Write an app that allows the user to enter the TV service (character), expected number of premium channels, and target monthly payment. Calculate and print the cost for the TV service selected. If the cost of the TV service is within his target monthly payment, display the message “Use this service” and the TV service name (Barter or Tish), otherwise, display “Use the other TV service.” and the TV service name (Barter or Tish).
+// This program will display if the tv service selected is more than the target price and which service should be used.
+
+// ==================== header files ===============================
+#include <iostream>    // for input/output
+#include <cstdlib>
+#include <iomanip>    // for output format
+using namespace std;
+// =============== symbolic constants ==============================
+const int DECIMAL = 2;
+const int WIDTH = 5;
+const float monthlycostBarter = 55.95;
+const float premiumBarter = 6.50;
+const float monthlycostTish = 40.99;
+const float premiumTish = 11.50;
+// ================== data type declarations =======================
+
+// =================== function prototype ==========================
+
+
+// this program contains variable declaration statements
+// and assignment statements
+
+int main()
+{
+   // data declarations
+
+   //Initialize totalCost
+   float totalCost;
+
+   //Initialize TV_Service, numPremium, targetPayment
+   char TV_Service;
+   int numPremium;
+   float targetPayment;
+
+   system("clear");
+   //read TV_Service, numPremium, targetPayment
+   cout << "Enter TV service (T or B): ";
+   cin >> TV_Service;
+   cout << "Enter # of premium channels: ";
+   cin >> numPremium;
+   cout << "Enter target payment: ";
+   cin >> targetPayment;
+
+   //compute totalCost
+   if (TV_Service == 'T' || TV_Service == 't' && targetPayment >= totalCost)
+      {
+      totalCost = monthlycostTish + (premiumTish * numPremium);
+      cout << "Cost of service: $" <<totalCost << endl;
+      cout << "Use this TV service - Tish " << endl;
+      }
+   else if (TV_Service == 'T' || TV_Service == 't' && targetPayment <= totalCost)
+      {
+      totalCost = monthlycostTish + (premiumTish * numPremium);
+      cout << "Cost of service: $" <<totalCost << endl;
+      cout << "Use the other TV service - Barter" << endl;
+      }
+   else if (TV_Service == 'B' || TV_Service == 'b' && targetPayment <= totalCost)
+      {
+      totalCost = monthlycostBarter + (premiumBarter * numPremium);
+      cout << "Cost of service: $" <<totalCost << endl;
+      cout << "Use this TV service - Barter" << endl;
+      }
+   else if (TV_Service == 'B' || TV_Service == 'b' && targetPayment >= totalCost)
+      {
+      totalCost = monthlycostBarter + (premiumBarter * numPremium);
+      cout << "Cost of service: $" <<totalCost << endl;
+      cout << "Use the other TV service - Tish" << endl;
+      }
+   return 0;
+}// end main
+
+//{
+// const float (monthlycostTish)
+// Purpose: Is the monthly cost of the Tish TV Service
+// Precondition: Is equal to 40.99
+// Postcondition: Is used to calculate the total cost if Tish is chosen as tv service
+
+// const float (premiumTish)
+// Purpose: Is the cost of premium for the Tish TV Service
+// Precondition: Is equal to 11.50
+// Postcondition: Is used to calculate the total cost if Tish is chosen as tv service
+
+// const float (monthlycostBarter)
+// Purpose: Is the monthly cost of the Barter TV Service
+// Precondition: Is equal to 55.95
+// Postcondition: Is used to calculate the total cost if Barter is chosen as tv service
+
+// const float (premiumBarter)
+// Purpose: Is the cost of premium for the Barter TV Service
+// Precondition: Is equal to 6.50
+// Postcondition: Is used to calculate the total cost if Barter is chosen as tv service
+
+// char TV_Service
+// Purpose: Determines which TV service is chosen
+// Precondition: Is either 't', 'T', 'b', 'B'
+// PostCondition: When a character is  chosen it is put into an if statement that determines which service is being used
+
+// int (numPremium)
+// Purpose: Is the number of premium channels that are being bought
+// Precondition: Is a positive integer
+// Postcondition:The user inputs the number of premium channels and is used to calculate the totalCost based on the service chosen
+
+// float (targetPayment)
+// Purpose: Is the target cost the user is willing to pay for the service
+// Precondition: Is a positive float
+// Postcondition:The user inputs their target payment and is used to determine which service should be used
+
+// float (totalCost)
+// Purpose: Is the total cost of the tv service and
+// Precondition: Is a positive float
+// Postcondition: totalCost is displayed on the screen
+
+
