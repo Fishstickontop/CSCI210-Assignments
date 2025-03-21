@@ -1,0 +1,82 @@
+// Problem Description: Write a program that prompts the user to enter the start value for number. Next, compute and print a square root and cube table (from start value down to 0 in decrements of 3) and also calculate and print:
+//the sum of the square roots
+//the sum of the cube
+//how many square roots were between 1.5  and 3.5
+
+
+
+// ==================== header files ===============================
+#include <iostream>    // for input/output
+#include <cstdlib>
+#include <iomanip>
+#include <cmath>    // for output format
+using namespace std;
+// =============== symbolic constants ==============================
+const int DECIMAL = 3;
+const int WIDTH = 5;
+const int CUTOFF = 0;
+const float MAX_ROOT = 3.5;
+const float MIN_ROOT=1.5;
+// ================== data type declarations =======================
+
+// =================== function prototype ==========================
+
+
+// this program contains variable declaration statements4b-1
+// and assignment statements
+
+int main()
+{
+   // data declarations
+   int number;
+   int sum_cube, number_cube;
+   float square_root, sum_squareroot;
+   int count_rootbet;
+
+   system("clear");
+
+   //initialize count_rootbet
+   count_rootbet = 0;
+
+   // Display Categories
+   cout << setw(8) << " Number "  << setw(10) << " Square Root "  << setw(6)<< "Cube" << endl;
+
+   //initilaize number (lcv)
+   cout << "Enter the start value for number (Positive Integer): ";
+   cin >> number;
+
+   //test number (lcv)
+   while (number >= CUTOFF)
+   { //begin loop
+
+       //compute square_root and number_cube
+       square_root = sqrt(number);
+
+       number_cube  = (number * number * number);
+
+       // Print number, square_root, and number_cube
+       cout << fixed << showpoint << setprecision(DECIMAL) << endl;
+       cout << setw(WIDTH) << number  << setw(12) <<  square_root  << setw(10) << number_cube << endl;
+
+       //compute sum_squareroot, sum_cube
+       sum_squareroot += square_root;
+
+       sum_cube += number_cube;
+
+       //compute count_rootbet
+      if (square_root > MIN_ROOT && square_root < MAX_ROOT)
+         count_rootbet++;
+
+       //update number
+      number = number - 3;
+   }//end loop
+
+   //display sum_squareroot, number_cube, count_rootbet
+   cout <<"The sum of the square roots is: " <<sum_squareroot << endl;
+
+   cout <<"The sum of the cube is: " <<sum_cube <<endl;
+
+   cout <<"The number of square roots between 1.5 and 3.5 is: "
+        << count_rootbet << endl;
+   return 0;
+}// end main
