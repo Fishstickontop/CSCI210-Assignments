@@ -1,0 +1,115 @@
+// Filename: lab9a-1b.cpp
+// Name: Darren Hall
+// Class: CSCI 210 Programming I
+// Section/Lab: Section 2 - Tuesday and Thursday
+// Problem Description: Write a function named oddTotalHigher which has two input/value parameters- number (represents an integer array of 20 ) and size (the actual size of the array) and one output/reference parameter (oddStatus - integer). The function computes the sum of the contents of the even indexed values in the array. It also computes the sum of the odd indexed values in the array.  The oddStatus is 1 if the sum of the odd indexed values is larger than the the sum of even indexed values, a 0 when the sum of the odd indexed values is equal to the sum of even indexed values; otherwise, oddStatus is -1.
+
+
+// ==================== header files ===============================
+#include <iostream>	// for input/output
+#include <cstdlib>
+#include <iomanip>
+#include "utility.h"
+ // for output format
+using namespace std;
+// =============== symbolic constants ==============================
+const int DECIMAL = 2;
+const int WIDTH = 5;
+const int MAX_SIZE = 20;
+
+// ================== data type declarations =======================
+
+// =================== function prototype ==========================
+void oddTotalHigher(int[], int, int&);
+int main()
+{
+   //data declarations
+   int numbers[MAX_SIZE];
+   int size;
+   int index;
+   int oddStatus;
+   system("clear");
+
+   // initalize test data
+
+   size = 10;
+   for(index = 0; index < size; index++)
+   	numbers[index] = 1 + index;
+   //call oddTotalHigher function
+   oddTotalHigher(numbers, size, oddStatus);
+
+   cout << "Test Case #1: Odd total more than Evan total" << endl;
+   // display test data
+   for(index = 0; index < size; index++)
+   cout << numbers[index] << ", ";
+   cout << endl;
+   cout <<"Odd Sums Status = "
+    	<< oddStatus << endl;
+   // display test data
+   size = 3;
+   for(index = 0; index < size; index++)
+   	numbers[index] = 1 + index;
+   // call oddTotalHigherFunction
+   oddTotalHigher(numbers, size, oddStatus);
+
+   cout << "Test Case #2: Even Total more than odd total" << endl;
+
+   //display test data
+   for(index = 0; index < size; index++)
+   cout << numbers[index] << ", ";
+   cout << endl;
+   cout <<"Odd Sums Status = "
+    	<< oddStatus << endl;
+   //initialize test data
+   size = 0;
+   // call oddTotalHigher function
+   oddTotalHigher(numbers, size, oddStatus);
+   cout << "Test Case #3: Size is 0" << endl;
+
+   // initialize test data
+   size = 2;
+   for(index = 0; index < size; index++)
+   	numbers[index] = 2;
+
+   // call oddTotalHigherFunction
+   oddTotalHigher(numbers, size, oddStatus);
+
+
+   cout << "Test Case #4: Odd total equal to even total" << endl;
+   // display test data
+   for(index = 0; index < size; index++)
+   cout << numbers[index] << ", ";
+   cout << endl;
+   cout <<"Odd Sums Status = "
+    	<< oddStatus << endl;
+return 0;
+}// end main
+
+void oddTotalHigher(int numbers[], int size, int& oddStatus)
+// Purpose: Computes the sum of odd index values and even index values and computes OddStatus
+// Precondition: The number and size are declared by test drivers
+// Postcondition: The oddStatus is computed
+{ // begin function
+   int index;
+   int evenTotal;
+   int oddTotal;
+
+   evenTotal = 0;
+   oddTotal = 0;
+
+   for(index= 0 ; index < size; index++)
+   {
+        	if (index % 2 == 0)
+  	evenTotal = numbers[index] + evenTotal;
+        	else if (index % 2 == 1)
+  	oddTotal = numbers[index] + oddTotal;
+   }
+   if (size > 0 && oddTotal > evenTotal)
+    	oddStatus = 1;
+   else if (size > 0 && oddTotal == evenTotal)
+    	oddStatus = 0;
+   else
+    	oddStatus = -1;
+} //end function
+
+
