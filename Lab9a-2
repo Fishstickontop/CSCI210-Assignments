@@ -1,0 +1,158 @@
+// Filename:   lab9a-2Final.cpp
+// Name: Darren Hall
+// Class: CSCI 210 Programming I
+// Section/Lab: Section 2 - Tuesday and Thursday
+// Problem Description:
+
+
+// ==================== header files ===============================
+#include <iostream>	// for input/output
+#include <cstdlib>
+#include <iomanip>
+#include "utility.h" // for output format
+using namespace std;
+// =============== symbolic constants ==============================
+const int DECIMAL = 2;
+const int WIDTH = 5;
+const int MAX_SIZE = 20;
+// ================== data type declarations =======================
+
+// =================== function prototype ==========================
+void topScoreLocation(int[], int, int&);
+
+int main()
+{
+   // data declarations
+	int number[MAX_SIZE];
+	int index;
+	int size;
+	int topNumberLoc;
+   system("clear");
+
+   //initialize test values
+   size = 3;
+   for (index = 0; index < size; index++)
+     	number[index] =  1;
+
+     	//call topScoreLocation function
+  	topScoreLocation(number, size, topNumberLoc);
+
+   cout << "Test Case #1: No number is more than the average " << endl;
+   for (index = 0; index < size; index++)
+  	// display results
+  	cout << number[index] << ", ";
+  	cout << endl;
+  	cout << "Top number Location = "
+       	<< topNumberLoc << endl;
+
+
+   // initialize test values
+   size = 3;
+   number[0] = 5;
+   number[1] = 2;
+   number[2] = 7;
+
+   // call topScoreLocation function
+   topScoreLocation(number, size, topNumberLoc);
+
+   cout << "Test Case #2: First Number is more than average " << endl;
+   // display results
+   for (index = 0; index < size; index++)
+  	cout << number[index] << ", ";
+  	cout << endl;
+  	cout << "Top number Location = "
+       	<< topNumberLoc << endl;
+
+   // initialize test values
+   size = 3;
+   number[0] = 1;
+   number[1] = 2;
+   number[2] = 6;
+
+   // call topScoreLocation function
+   topScoreLocation(number, size, topNumberLoc);
+
+   cout << "Test Case #3: Last is first Number is more than average " << endl;
+   // display results
+   for (index = 0; index < size; index++)
+  	cout << number[index] << ", ";
+  	cout << endl;
+  	cout << "Top number Location = "
+       	<< topNumberLoc << endl;
+
+   //initialize test values
+   size = 3;
+   number[0] = 1;
+   number[1] = 8;
+   number[2] = 9;
+
+   // call topScoreLocation function
+   topScoreLocation(number, size, topNumberLoc);
+
+   cout << "Test Case #4: Middle is first Number is more than average " << endl;
+   // display results
+   for (index = 0; index < size; index++)
+  	cout << number[index] << ", ";
+  	cout << endl;
+  	cout << "Top number Location = "
+       	<< topNumberLoc << endl;
+
+   //initialize test values
+  size = 0;
+
+   //call topScoreLocation function
+  topScoreLocation(number, size, topNumberLoc);
+
+  cout << "Test Case #5: Size is 0 " << endl;
+
+   // displayResults
+   for (index = 0; index < size; index++)
+     	{
+  	cout << number[index] << ", ";
+  	cout << endl;
+  	cout << "Top number Location = "
+       	<< topNumberLoc << endl;
+     	}
+
+
+
+
+
+
+   return 0;
+}// end main
+
+void topScoreLocation(int number[],int size, int& topNumberLoc)
+// Purpose: Compute the location of the first value higher than the average score
+// Precondition: Number and size values are declared in main
+// Postcondition: topNumberLoc is computed and is and integer
+{
+ //data declarations
+  int index;
+  float avgScore;
+  int numSum;
+
+  //initialize avgScore and numSum
+  avgScore = 0;
+  numSum = 0;
+
+  for (index = 0; index < size; index++)
+  	{ //begin loop
+   	numSum = number[index] + numSum;
+   	avgScore = numSum / size;
+  	} // end loop
+
+  // initialize counter
+  index = 0;
+
+   for (topNumberLoc = 0; number[index] < avgScore; topNumberLoc++)
+  	{ //begin loop
+       	index++;
+  	} // end loop
+  	if (number[index] <= avgScore)
+      	topNumberLoc = -1;
+} // end function
+
+
+
+
